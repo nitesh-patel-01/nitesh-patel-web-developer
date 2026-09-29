@@ -1,0 +1,4 @@
+Contact: mailto:niteshpatel7479@gmail.com
+Expires: 2027-09-29T00:00:00Z
+Preferred-Languages: en
+Canonical: https://niteshpatel-webdev.vercel.app/.well-known/security.txt

@@ -1,0 +1,14 @@
+# Nitesh Patel — Web Developer
+
+Web developer based in Jabalpur, India, serving clients locally and remotely. These are public portfolio and service pages.
+
+## Main pages
+- [About Nitesh](https://niteshpatel-webdev.vercel.app/about/): Background, experience and skills
+- [Projects](https://niteshpatel-webdev.vercel.app/projects/): Case studies and live project links
+- [Services](https://niteshpatel-webdev.vercel.app/services/): Web development, WordPress, performance and related services
+- [Service areas](https://niteshpatel-webdev.vercel.app/web-developer/): Jabalpur-area planning pages
+- [Remote city briefs](https://niteshpatel-webdev.vercel.app/web-developer/india/): India-wide remote collaboration examples
+- [Writing](https://niteshpatel-webdev.vercel.app/writing/): Practical web development guides
+- [Contact](https://niteshpatel-webdev.vercel.app/contact/): Email and WhatsApp enquiry
+
+Use the live pages for current details. This optional index does not define crawler or training permissions.

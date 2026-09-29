@@ -121,3 +121,17 @@
     }
   });
 })();
+
+/* Shared contact shortcuts on every page. */
+(() => {
+  const style = document.createElement('style');
+  style.textContent = '.contact-float{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom));z-index:90;display:flex;flex-direction:column;gap:10px}.contact-float a{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;color:#fff;border:1px solid #ffffff40;box-shadow:0 6px 20px #0005;transition:transform .2s;text-decoration:none}.contact-float a:hover{transform:translateY(-3px)}.contact-float a:focus-visible{outline:3px solid #fff;outline-offset:4px}.contact-float .contact-call{background:#2563eb}.contact-float .contact-whatsapp{background:#128c4a}.contact-float svg{width:25px;height:25px}@media(prefers-reduced-motion:reduce){.contact-float a{transition:none}}';
+  document.head.append(style);
+  const shortcuts = document.createElement('nav');
+  shortcuts.className = 'contact-float';
+  shortcuts.setAttribute('aria-label', 'Contact Nitesh');
+  const message = 'Hi Nitesh! I found you through your portfolio website and would like to discuss a website project.\nPage: ' + location.origin + location.pathname;
+  shortcuts.innerHTML = '<a class="contact-call" href="tel:+917974823298" aria-label="Call Nitesh about a website project" title="Call Nitesh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></a><a class="contact-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Nitesh about a website project" title="Discuss your website on WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-4.9a8.5 8.5 0 1 1 15.9-4.1z"/><path d="M8 7.5c-.6 1-.1 3 1.6 4.7s3.7 2.2 4.7 1.6l1-1-2-1-1 1c-1.3-.5-2.6-1.8-3.1-3.1l1-1-1-2z"/></svg></a>';
+  shortcuts.querySelector('.contact-whatsapp').href = 'https://wa.me/917974823298?text=' + encodeURIComponent(message);
+  document.body.append(shortcuts);
+})();

@@ -53,7 +53,7 @@ project_notes={
 'hushly':('A personal link is the entry point, so the page has to make the recipient and the next action immediately clear. After submission, the account owner needs a readable inbox and a reliable path to reply.','This kind of product lives in shared social links. I pay particular attention to narrow screens, signup friction, message states and the language around privacy.'),
 'jabalpur-connect':('A local community product needs more than a profile card. Discovery, preferences, mutual interest, chat and account controls have to form a coherent path.','For a social experience, clear reporting and blocking routes are part of the interface. I also consider how visitors understand what is public on a profile and what stays inside a conversation.'),
 'happyhealing':('A storefront is both a catalog and an introduction to the brand. Product organization, readable descriptions and a clear buying path help visitors decide with confidence.','Handloom products benefit from context: fabric, craft, care and imagery. Those details give the page substance beyond a generic product grid.'),
-'john-stamang':('A consulting site must explain who the service helps and what a prospective client can expect. The navigation should lead from the offer to examples and contact.','For specialist work, clarity is a design asset. Simple typography and carefully grouped service information can make the expertise easier to understand.'),
+'ak-goud-properties':('A property website should explain the available property types and locations, then make an enquiry straightforward. AK Goud Properties connects its service sections and Hyderabad project areas to WhatsApp contact.','Property buyers need practical details about the location and next steps. Clear service categories, readable contact information and a site-visit process support that decision.'),
 'fitcoach':('A fitness offer needs a strong opening promise grounded in the actual service, then a simple route into plans or enquiry.','Mobile visitors often arrive from a short link. The page therefore needs a short visual path, readable sections and one clear next action.'),
 'flipbook-converter':('The conversion task should lead the page: choose a document, understand the expected format and see what happens next.','A utility needs explicit progress, success and error states. File limitations and output expectations should be visible before a user commits time to uploading.'),
 'invoice-generator':('Invoice tools are used for a task with little patience for unnecessary setup. Labels, calculations and preview need to stay close together.','A useful export flow should preserve the entered information, show the final document clearly and make the download action easy to find.'),
@@ -125,7 +125,7 @@ visual_specs={
  'hushly':('hushly','ASK ANONYMOUSLY','Say what you really think.','Drop a question','Ask me anything'),
  'jabalpur-connect':('connect','JABALPUR CONNECT','Meet someone nearby.','Discover people','Interests · Matches · Chat'),
  'happyhealing':('commerce','HANDLOOM & HEART','Wear a story.','Explore the collection','Craft · Culture · Care'),
- 'john-stamang':('john','RETAIL CONSULTING','A sharper retail strategy.','Explore services','Insights · Growth · Operations'),
+ 'ak-goud-properties':('john','RETAIL CONSULTING','A sharper retail strategy.','Explore services','Insights · Growth · Operations'),
  'fitcoach':('fitcoach','FITCOACH','Move with a plan.','Start your journey','Training · Guidance · Progress'),
  'flipbook-converter':('flipbook','FLIPBOOK STUDIO','Pages with presence.','Choose a PDF','Upload · Convert · Share'),
  'invoice-generator':('invoice','INVOICE TOOL','Make billing simpler.','New invoice','Details · Preview · Export'),
@@ -250,3 +250,4 @@ print('Generated',len(paths),'routes')
 
 
 shutil.copytree(base/'assets',D/'assets',dirs_exist_ok=True,ignore=shutil.ignore_patterns('*.jpg'))
+

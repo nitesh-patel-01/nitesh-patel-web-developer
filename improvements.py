@@ -2,7 +2,7 @@ from sales import offers, business_proof, reassurance
 from html import escape as e
 
 def category(slug):
- return 'business' if slug in ['happyhealing','john-stamang','shri-dadaji'] else 'apps' if slug in ['hushly','jabalpur-connect','fitcoach','dhanda-tycoon','zen-flow-henna'] else 'tools'
+ return 'business' if slug in ['happyhealing','ak-goud-properties','shri-dadaji'] else 'apps' if slug in ['hushly','jabalpur-connect','fitcoach','dhanda-tycoon','zen-flow-henna'] else 'tools'
 
 playground='''<section class="design-lab"><div class="wrap"><div class="lab-heading"><div><span class="eyebrow">MAKE A SMALL CHANGE. SEE THE DIFFERENCE.</span><h2>Your turn to build.</h2></div><p>Change the layout and accent. The preview and CSS update together.</p></div><div class="lab-grid"><div class="lab-editor"><div class="lab-controls"><label>Layout <select id="demo-layout"><option value="row">Side by side</option><option value="column">Stacked</option></select></label><label>Accent <select id="demo-accent"><option value="#81f5ee">Mint</option><option value="#ffd18a">Amber</option><option value="#8abaff">Blue</option></select></label></div><pre id="demo-code">.preview-card {
   display: flex;
@@ -72,3 +72,4 @@ def enrich(path,body,title):
  if path.startswith('/web-developer/') and path.count('/')>=3:
   body+='<section><div class="wrap"><span class="eyebrow">FROM PLAN TO INTERFACE</span><h2>A useful reference for your brief.</h2><div class="detail-grid"><article class="detail"><h3>Local shop or service</h3><p>Look at Shri Dadaji for a product-category and direct-contact approach.</p><a href="/projects/shri-dadaji/">See the storefront ↗</a></article><article class="detail"><h3>Interactive application</h3><p>Explore how a focused task becomes a browser interface in the invoice tool.</p><a href="/projects/invoice-generator/">See the invoice tool ↗</a></article><article class="detail"><h3>Before asking for a quote</h3><p>Prepare the page list, required features, content status and editing needs.</p><a href="/writing/website-cost-india/">Read the scoping guide ↗</a></article></div></div></section>'
  return body
+

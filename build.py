@@ -102,6 +102,7 @@ nav='''<nav class="nav-links" id="nav-links" aria-label="Main navigation"><a hre
 paths=[];route_titles=[]
 from improvements import enrich, category, playground
 def layout(path,title,desc,body,kind='WebPage',extra=None):
+ title=title.removesuffix(' — Nitesh Patel')
  body=enrich(path,body,title)
  canonical=origin+path
  schema={'@context':'https://schema.org','@type':kind,'name':title,'description':desc,'url':canonical,'author':{'@type':'Person','name':'Nitesh Patel','url':origin+'/'}}
@@ -138,7 +139,7 @@ visual_specs={
  'zen-flow-henna':('henna','ZEN FLOW HENNA','Art in every line.','Explore the work','Patterns · Craft · Enquiries')}
 def project_visual(slug):
  if (base/'assets'/f'{slug}.webp').exists():
-  return f'<figure class="real-project"><img src="/assets/{slug}.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Live {e(slug.replace('-', ' ').title())} website screenshot"><figcaption>Live website · captured September 2026</figcaption></figure>'
+  return f'<figure class="real-project"><img src="/assets/{slug}.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Live {e(next(p[1] for p in projects if p[0]==slug))} website screenshot"><figcaption>Live website · captured September 2026</figcaption></figure>'
  theme,label,title,action,items=visual_specs[slug]
  return f'<div class="project-visual pv-{theme}" aria-label="Illustrative {e(slug)} interface"><div class="pv-window"><div class="pv-bar"><i></i><i></i><i></i><span>{e(label.lower().replace(" ","-"))}.web</span></div><div class="pv-content"><span class="pv-label">{e(label)}</span><div class="pv-title">{e(title)}</div><span class="pv-pill">{e(action)}</span><div class="pv-mini" aria-hidden="true"><b></b><b></b><b></b></div><span class="pv-label" style="display:block;margin-top:10px">{e(items)}</span></div></div></div>'
 def card(href,label,title,desc,project=False):

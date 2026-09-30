@@ -18,7 +18,7 @@
   const responses={
     help:['Available commands: about, projects, skills, surprise, clear','Choose a command above or type one here.'],
     about:['Nitesh Patel · web developer in Jabalpur','I build websites and useful products with a focus on clarity, responsive design and discovery.'],
-    projects:['15 projects in the portfolio.','Featured: Hushly, Jabalpur Connect, HappyHealing, John Stamang.','Explore them all at /projects/'],
+    projects:['15 projects in the portfolio.','Featured: Hushly, Jabalpur Connect, Shri Dadaji, Invoice Generator.','Explore them all at /projects/'],
     skills:['HTML · CSS · JavaScript · PHP · WordPress · WooCommerce','Also: responsive design, REST APIs, performance and technical SEO.'],
     surprise:['You found an easter egg ✦','Every great interface starts with curiosity. Try the projects command next.']
   };

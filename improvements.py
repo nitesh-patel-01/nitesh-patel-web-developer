@@ -48,6 +48,18 @@ def enrich(path,body,title):
   body=body.replace('<section class="design-lab">',offers()+business_proof()+'<section class="design-lab">',1)
   body=body.replace('<section id="whatsapp-enquiry"',reassurance()+'<section id="whatsapp-enquiry"',1)
  if path.startswith('/projects/') and path!='/projects/':
+  slug=path.strip('/').split('/')[-1]
+  evidence={
+   'ak-goud-properties':('Help property buyers understand the offer before making contact.','The live site presents plots, villas and apartments, Hyderabad service locations and the site-visit process.','Service sections connect to a direct WhatsApp enquiry route.'),
+   'shri-dadaji':('Make a local agricultural shop easier to find and enquire about.','The live storefront introduces product categories and shop information in a bilingual interface.','Visitors can move from the product overview to phone or WhatsApp contact.'),
+   'happyhealing':('Present a handloom catalog with a usable shopping route.','The live site includes saree categories, individual product pages and a shopping interface.','Visitors can inspect product presentation and follow the collection into the store.'),
+   'hushly':('Make a shared question link understandable to a social visitor.','The live homepage explains the question and sharing workflow and offers an account entry point.','The interface provides a clear route to begin; account-only features require signing in.'),
+   'invoice-generator':('Keep invoice information and document preview close together.','The live interface includes business details, invoice fields and a document preview.','The export and print controls are visible alongside the form; financial outcomes are not measured here.')
+  }
+  if slug in evidence:
+   goal,interface,delivered=evidence[slug]
+   body+='<section><div class="wrap"><span class="eyebrow">CASE STUDY / VISIBLE PROJECT EVIDENCE</span><h2>From visitor need to working interface.</h2><div class="detail-grid">'+''.join('<article class="detail"><h3>'+e(h)+'</h3><p>'+e(p)+'</p></article>' for h,p in [('The visitor need',goal),('The interface',interface),('The delivered experience',delivered)])+'</div><p class="small">Explore the live project to review the experience. Traffic, revenue and conversion improvements are not claimed without supporting analytics.</p></div></section>'
+ if path.startswith('/projects/') and path!='/projects/':
   body+='<section><div class="wrap related-work"><span class="eyebrow">HAVE A SIMILAR PROJECT?</span><h2>Let’s build a website for your business.</h2><p class="lead">Tell me about your audience and what visitors should do. We can turn that into a website brief and an agreed quote.</p><a class="button" href="/hire-web-developer/#quote-form">Request a website quote ↗</a></div></section>'
  if path!='/':
   label=path.strip('/').split('/')[0]

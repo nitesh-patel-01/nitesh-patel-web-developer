@@ -135,3 +135,13 @@
   shortcuts.querySelector('.contact-whatsapp').href = 'https://wa.me/917974823298?text=' + encodeURIComponent(message);
   document.body.append(shortcuts);
 })();
+
+// Small, bounded interactions; no arbitrary code evaluation.
+(()=>{
+ const layout=document.querySelector('#demo-layout'),accent=document.querySelector('#demo-accent'),preview=document.querySelector('#demo-preview');
+ const update=()=>{if(!preview)return;preview.classList.toggle('column',layout.value==='column');preview.style.setProperty('--accent',accent.value);document.querySelector('#demo-code').textContent=`.preview-card {\n  display: flex;\n  flex-direction: ${layout.value};\n  --accent: ${accent.value};\n}`;};
+ layout?.addEventListener('change',update);accent?.addEventListener('change',update);
+ const cards=[...document.querySelectorAll('[data-project-category]')];
+ document.querySelectorAll('[data-project-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-project-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));cards.forEach(card=>card.hidden=button.dataset.projectFilter!=='all'&&card.dataset.projectCategory!==button.dataset.projectFilter);document.querySelector('#project-count').textContent=`${cards.filter(c=>!c.hidden).length} projects shown`;}));
+ document.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;const href=link.getAttribute('href')||'';let action=href.startsWith('tel:')?'call':href.includes('wa.me')?'whatsapp':href.endsWith('.pdf')?'resume_download':link.textContent.includes('Visit live')?'project_visit':null;if(action){const detail={event:'portfolio_conversion',action,page:location.pathname};window.dispatchEvent(new CustomEvent('portfolio:conversion',{detail}));if(Array.isArray(window.dataLayer))window.dataLayer.push(detail);}});
+})();

@@ -1,3 +1,4 @@
+from sales import offers, business_proof, reassurance
 from html import escape as e
 
 def category(slug):
@@ -43,6 +44,11 @@ article_sections={
 }
 
 def enrich(path,body,title):
+ if path=='/':
+  body=body.replace('<section class="design-lab">',offers()+business_proof()+'<section class="design-lab">',1)
+  body=body.replace('<section id="whatsapp-enquiry"',reassurance()+'<section id="whatsapp-enquiry"',1)
+ if path.startswith('/projects/') and path!='/projects/':
+  body+='<section><div class="wrap related-work"><span class="eyebrow">HAVE A SIMILAR PROJECT?</span><h2>Let’s build a website for your business.</h2><p class="lead">Tell me about your audience and what visitors should do. We can turn that into a website brief and an agreed quote.</p><a class="button" href="/hire-web-developer/#quote-form">Request a website quote ↗</a></div></section>'
  if path!='/':
   label=path.strip('/').split('/')[0]
   body='<nav class="wrap breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> '+(f'<a href="/{label}/">{e(label.replace("-"," ").title())}</a> <span>/</span> ' if path.count('/')>2 else '')+f'<span>{e(title.split(" — ")[0])}</span></nav>'+body

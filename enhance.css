@@ -75,3 +75,18 @@ section:after{content:'</>';position:absolute;right:max(16px,calc((100vw - 1200p
 @media(max-width:650px){.reveal,.motion-step{opacity:1;transform:none;transition:none}.area-code span.motion-step{transition-delay:0s}.live-terminal-bar{gap:8px;padding:12px}.live-terminal-bar>span:last-child{font-size:.65rem}.brief-bar{gap:8px;padding:12px}.showcase-caption a{white-space:normal}.footer a{overflow-wrap:anywhere}.hero h1{font-size:clamp(2.6rem,12vw,3.55rem)}}
 @media(max-width:950px){.hero{grid-template-columns:minmax(0,1fr);min-height:0}.hero>*{min-width:0}.workspace{width:min(100%,650px)}}
 @media(max-width:650px){.hero{gap:42px}.hero h1{max-width:12ch}.preview{width:min(150px,48%);right:0;bottom:-25px}.editor{min-height:265px}.live-terminal,.brief-preview,.browser{max-width:100%}}
+
+/* Contain decorative mobile overflow and let grid content shrink to its viewport. */
+html{overflow-x:clip}
+.playground-layout>*,.brief-controls>*,.hero-strip>*,.footer-grid>*{min-width:0}
+@media(max-width:950px){
+ .playground-layout,.brief-layout,.showcase-layout{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:650px){
+ .hero{overflow:clip}
+ .workspace{transform:none;max-width:100%}
+ .hero:before{width:240px;height:240px;left:-160px;box-shadow:none}
+ .editor{grid-template-columns:60px minmax(0,1fr)}
+ .browser-bar .address{min-width:0}
+ .hero-strip{gap:12px;overflow-wrap:anywhere}
+}

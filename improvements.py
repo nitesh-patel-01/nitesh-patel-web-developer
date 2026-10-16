@@ -2,7 +2,7 @@ from sales import offers, business_proof, reassurance
 from html import escape as e
 
 def category(slug):
- return 'business' if slug in ['happyhealing','ak-goud-properties','shri-dadaji'] else 'apps' if slug in ['hushly','jabalpur-connect','fitcoach','dhanda-tycoon','zen-flow-henna'] else 'tools'
+ return 'business' if slug in ['happyhealing','ak-goud-properties','shri-dadaji'] else 'apps' if slug in ['aniloveindia','hushly','jabalpur-connect','fitcoach','dhanda-tycoon','zen-flow-henna'] else 'tools'
 
 playground='''<section class="design-lab"><div class="wrap"><div class="lab-heading"><div><span class="eyebrow">MAKE A SMALL CHANGE. SEE THE DIFFERENCE.</span><h2>Your turn to build.</h2></div><p>Change the layout and accent. The preview and CSS update together.</p></div><div class="lab-grid"><div class="lab-editor"><div class="lab-controls"><label>Layout <select id="demo-layout"><option value="row">Side by side</option><option value="column">Stacked</option></select></label><label>Accent <select id="demo-accent"><option value="#81f5ee">Mint</option><option value="#ffd18a">Amber</option><option value="#8abaff">Blue</option></select></label></div><pre id="demo-code">.preview-card {
   display: flex;

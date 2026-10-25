@@ -145,3 +145,48 @@
  document.querySelectorAll('[data-project-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-project-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));cards.forEach(card=>card.hidden=button.dataset.projectFilter!=='all'&&card.dataset.projectCategory!==button.dataset.projectFilter);document.querySelector('#project-count').textContent=`${cards.filter(c=>!c.hidden).length} projects shown`;}));
  document.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;const href=link.getAttribute('href')||'';let action=href.startsWith('tel:')?'call':href.includes('wa.me')?'whatsapp':href.endsWith('.pdf')?'resume_download':link.textContent.includes('Visit live')?'project_visit':null;if(action){const detail={event:'portfolio_conversion',action,page:location.pathname};window.dispatchEvent(new CustomEvent('portfolio:conversion',{detail}));if(Array.isArray(window.dataLayer))window.dataLayer.push(detail);}});
 })();
+
+/* 25 Oct 2026 wow layer: aurora orbs, cursor glow, scroll reveals, pointer tilt.
+   All motion is skipped for reduced-motion users and touch pointers. */
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  const hero = document.querySelector('.hero');
+  if (hero && !hero.querySelector('.wow-orbs')) {
+    const orbs = document.createElement('div');
+    orbs.className = 'wow-orbs';
+    orbs.setAttribute('aria-hidden', 'true');
+    orbs.innerHTML = '<i></i><i></i><i></i>';
+    hero.prepend(orbs);
+  }
+  if (matchMedia('(pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.className = 'wow-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    document.body.append(glow);
+    let tx = innerWidth / 2, ty = innerHeight / 2, cx = tx, cy = ty, raf = 0;
+    addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    function tick() {
+      raf = 0; cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+      glow.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      if (Math.abs(tx - cx) > 0.5 || Math.abs(ty - cy) > 0.5) raf = requestAnimationFrame(tick);
+    }
+    document.querySelectorAll('.card, .identity-card').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--ry', (px * 7).toFixed(2) + 'deg');
+        el.style.setProperty('--rx', (-py * 7).toFixed(2) + 'deg');
+      });
+      el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+    });
+  }
+  const targets = [...document.querySelectorAll('.card, .detail, .area-link, .faq-list details, .showcase-display, .live-terminal, .brief-preview, .form-shell')];
+  if (!targets.length) return;
+  targets.forEach((el, i) => { el.classList.add('wow'); el.style.transitionDelay = ((i % 3) * 80) + 'ms'; });
+  if (!('IntersectionObserver' in window)) { targets.forEach(el => el.classList.add('wow-in')); return; }
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('wow-in'); io.unobserve(en.target); }
+  }), { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(el => io.observe(el));
+})();

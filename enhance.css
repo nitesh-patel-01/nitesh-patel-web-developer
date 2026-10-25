@@ -102,3 +102,53 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{ou
 @media(max-width:650px){.hero{grid-template-columns:minmax(0,1fr);padding:40px 0;gap:30px}.hero h1{font-size:clamp(2.6rem,10vw,3.5rem)}.identity-card{transform:none;max-width:400px;width:100%}.identity-card>img{height:250px}.lab-editor,.demo-preview{padding:20px}.demo-preview{gap:15px}.demo-art{flex-basis:70px;min-height:85px;font-size:24px}.real-project figcaption{font-size:10px}.nav{gap:10px}.brand{font-size:1rem}.contact-float{bottom:max(15px,env(safe-area-inset-bottom));right:12px}}
 @media(prefers-reduced-motion:reduce){.demo-art{transition:none}}
 .motion-step{opacity:1;transform:none}.hero:before{width:260px;height:260px;left:-170px;box-shadow:none}.identity-top{overflow-wrap:anywhere}.demo-preview>*{min-width:0}
+
+/* === 25 Oct 2026 update: wow layer — GPU-friendly, motion-safe === */
+/* Hero entrance + living gradient headline */
+.hero{overflow:visible}
+.hero>div{position:relative;z-index:1}
+.hero>div:first-child{animation:wowUp .9s cubic-bezier(.2,.8,.2,1) both}
+.hero>div:last-child{animation:wowUp .9s .15s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 span{background-size:220% 100%;animation:wowGradient 8s ease-in-out infinite alternate}
+@keyframes wowUp{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes wowGradient{from{background-position:0% 50%}to{background-position:100% 50%}}
+/* Aurora orbs behind the hero (injected by enhance.js, decorative only) */
+.wow-orbs{position:absolute;inset:-40px 0 -20px;overflow:hidden;pointer-events:none;z-index:0}
+.wow-orbs i{position:absolute;display:block;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
+.wow-orbs i:nth-child(1){width:340px;height:340px;left:-60px;top:-40px;background:#7c3aed;animation:wowDrift 18s ease-in-out infinite alternate}
+.wow-orbs i:nth-child(2){width:280px;height:280px;right:5%;top:30%;background:#06b6d4;animation:wowDrift 22s ease-in-out infinite alternate-reverse}
+.wow-orbs i:nth-child(3){width:220px;height:220px;left:42%;bottom:-60px;background:#ec4899;animation:wowDrift 26s ease-in-out infinite alternate}
+@keyframes wowDrift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,-35px) scale(1.15)}}
+/* Cursor glow (desktop pointer only, injected by enhance.js) */
+.wow-glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,255,.20),rgba(34,211,238,.08) 45%,transparent 65%);pointer-events:none;z-index:1;will-change:transform}
+@media(pointer:coarse){.wow-glow{display:none}}
+/* Buttons: shine sweep */
+.button{position:relative;overflow:hidden}
+.button:after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.45) 50%,transparent 60%);transform:translateX(-130%);transition:transform .8s ease;pointer-events:none}
+.button:hover:after{transform:translateX(130%)}
+/* Nav underline */
+.nav-links a:not(.nav-cta){position:relative}
+.nav-links a:not(.nav-cta):after{content:'';position:absolute;left:0;bottom:-5px;height:2px;width:100%;background:linear-gradient(90deg,#ac7cff,#8ef6e9);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.nav-links a:not(.nav-cta):hover:after{transform:scaleX(1)}
+/* Cards: shine sweep + pointer tilt (tilt vars set by enhance.js) */
+.card{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s ease,border-color .25s,box-shadow .25s}
+.card:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-8px)}
+.card:after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.14) 50%,transparent 58%);transform:translateX(-130%);transition:transform .9s ease;pointer-events:none}
+.card:hover:after{transform:translateX(130%)}
+.identity-card{transform:rotate(2deg) perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s ease}
+.identity-card>img{animation:wowImgFloat 6s ease-in-out infinite alternate}
+@keyframes wowImgFloat{from{transform:scale(1)}to{transform:scale(1.03)}}
+/* Scroll reveals (JS adds .wow, then .wow-in on entry) */
+.wow{opacity:0;transform:translateY(28px) scale(.985);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.wow-in{opacity:1;transform:none}
+/* Livelier ticker + scroll meter */
+.ticker-track{animation-duration:48s}
+.scroll-meter{background-size:200% 100%;animation:wowMeter 3s linear infinite}
+@keyframes wowMeter{to{background-position:200% 0}}
+@media(max-width:650px){.wow-orbs i:nth-child(3){display:none}.hero>div:last-child{animation-delay:.05s}}
+@media(prefers-reduced-motion:reduce){
+ .hero>div,.hero h1 span,.wow-orbs i,.identity-card>img,.scroll-meter{animation:none!important}
+ .wow{opacity:1;transform:none;transition:none}
+ .card,.identity-card{transform:none}
+ .card:hover{transform:translateY(-4px)}
+}

@@ -160,3 +160,89 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{ou
 .lead-steps b{color:#a7f5e5;font:.8rem ui-monospace,monospace;letter-spacing:.08em}
 .lead-steps p{margin:8px 0 0;color:#d8cde9}
 .lead-section .form-shell{box-shadow:0 25px 65px #0008}
+
+/* === Redesign 25 Oct 2026: clean developer theme, CSS-only motion, no heavy libraries === */
+:root{--bg:#07090d;--bg2:#0c1118;--panel:#0f1620;--panel2:#141d2a;--line:#1e293b;--ink:#eef2f6;--muted:#94a3b8;--blue:#22d3ee;--cyan:#5eead4;--pink:#f472b6;--sun:#facc15}
+body{background:#07090d;color:#eef2f6}
+body:before{background:radial-gradient(ellipse at 85% 0%,#164e6333,transparent 38%),radial-gradient(ellipse at 10% 20%,#36531426,transparent 32%),#07090d}
+header{background:#07090de6;border-color:#1e293b}
+a:hover{color:#5eead4}
+.eyebrow{color:#5eead4}
+h1,h2,h3{letter-spacing:-.04em}
+h1{font-size:clamp(2.9rem,5.6vw,5.2rem);line-height:1.02}
+h2{font-size:clamp(2rem,4vw,3.4rem)}
+section{padding:80px 0;border-top-color:#1e293b}
+.nav-links a{color:#dbe4ee}
+.brand-mark,.nav-cta,.button{background:linear-gradient(120deg,#22d3ee,#a3e635);border-color:transparent;color:#06120a}
+.button.outline{background:transparent;color:#eef2f6;border-color:#334155}
+.button.outline:hover{color:#5eead4;border-color:#5eead4}
+.nav-cta:hover,.button:hover{color:#06120a}
+/* Entry veil: 0.85s total, never blocks clicks, gone on reduced motion */
+.entry-veil{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:#07090d;pointer-events:none;animation:veilOut .55s ease .3s forwards}
+.entry-veil span{font:700 3rem/1 ui-monospace,monospace;letter-spacing:-.08em;background:linear-gradient(120deg,#67e8f9,#a3e635);background-clip:text;color:transparent;animation:veilMark .5s ease both}
+@keyframes veilOut{to{opacity:0;visibility:hidden;transform:translateY(-24px)}}
+@keyframes veilMark{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+header{animation:navDrop .6s ease both}
+@keyframes navDrop{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+/* Hero: faster entry, cleaner type */
+.hero{padding:90px 0 80px;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:56px;min-height:0}
+.hero>div:first-child{animation-duration:.65s}
+.hero>div:last-child{animation-duration:.65s;animation-delay:.12s}
+.hero h1 span{background:linear-gradient(100deg,#fff,#67e8f9 45%,#a3e635);background-clip:text}
+.hero-strip{color:#94a3b8}
+.resume-link{color:#5eead4}
+/* Photo replaced by a pure-CSS developer card */
+.identity-card{background:#0f1620;border-color:#1e293b;transform:none;box-shadow:0 24px 60px #00000080;border-radius:16px}
+.identity-top{border-color:#1e293b;color:#5eead4}
+.identity-bottom{border-top:1px solid #1e293b}
+.identity-visual{height:280px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#0b1220,#0f1f2a)}
+.identity-visual:before{content:'';position:absolute;inset:0;background:linear-gradient(#22d3ee0a 1px,transparent 1px),linear-gradient(90deg,#22d3ee0a 1px,transparent 1px);background-size:28px 28px}
+.avatar-core{position:relative;text-align:center;animation:avatarPop .6s .3s both}
+.avatar-mark{display:block;font:700 4.2rem/1 ui-monospace,monospace;letter-spacing:-.08em;background:linear-gradient(120deg,#67e8f9,#a3e635);background-clip:text;color:transparent}
+.avatar-core code{display:block;margin-top:10px;color:#5eead4;font-size:.9rem}
+.avatar-code{position:absolute;left:22px;bottom:18px;right:22px;display:grid;gap:7px}
+.avatar-code i{display:block;height:8px;border-radius:4px;background:#1e293b;animation:codeGrow .5s both}
+.avatar-code i:nth-child(1){width:72%;animation-delay:.45s;background:#164e63}
+.avatar-code i:nth-child(2){width:52%;animation-delay:.55s}
+.avatar-code i:nth-child(3){width:64%;animation-delay:.65s;background:#365314}
+.avatar-cursor{display:block;width:10px;height:14px;background:#a3e635;animation:blink 1.1s step-end infinite}
+@keyframes avatarPop{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes codeGrow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1)}}
+/* Cards, panels, sections in the new palette */
+.card{background:linear-gradient(160deg,#101827,#0b111a);border-color:#1e293b}
+.card:before{background:linear-gradient(90deg,#22d3ee,#a3e635,#22d3ee)}
+.card:hover{border-color:#22d3ee;box-shadow:0 22px 45px #00000090}
+.card .num{color:#5eead4}
+.card .link{color:#5eead4}
+.detail,.form-shell{background:#0f1620;border-color:#1e293b}
+.footer{background:#05070a}
+.footer-cta{background:linear-gradient(110deg,#0e7490,#1a2e1a 60%,#0f172a)}
+.ticker{background:#0b111a;border-color:#1e293b}
+.ticker-track{color:#cbd5e1}
+.ticker b{color:#a3e635}
+.showcase-section{background:radial-gradient(circle at 60% 30%,#164e6330,transparent 45%),#07090d}
+.showcase-display{background:#0b111a;border-color:#1e293b}
+.live-terminal{background:#0a0f16;border-color:#1e293b}
+.live-terminal-bar{background:#111827;border-color:#1e293b}
+.brief-preview{background:#0a0f16;border-color:#1e293b}
+.brief-bar{background:#111827}
+.area-code{background:#0a0f16;border-color:#1e293b}
+.faq-list details{background:#0f1620;border-color:#1e293b}
+.stage-tab{background:#0f1620;border-color:#1e293b;color:#cbd5e1}
+.stage-tab[aria-selected=true]{background:#164e63;border-color:#22d3ee}
+.lead-section{background:radial-gradient(circle at 85% 20%,#164e6340,transparent 45%),#07090d}
+.lead-steps>div{background:#0f1620;border-left-color:#22d3ee}
+.scroll-meter{background:linear-gradient(90deg,#22d3ee,#a3e635,#22d3ee)}
+/* Faster, lighter motion: shorter reveals, softer orbs */
+.wow{transition:opacity .55s cubic-bezier(.2,.8,.2,1),transform .55s cubic-bezier(.2,.8,.2,1)}
+.wow-orbs i{filter:blur(45px);opacity:.35}
+.wow-orbs i:nth-child(1){background:#0e7490}
+.wow-orbs i:nth-child(2){background:#22d3ee}
+.wow-orbs i:nth-child(3){background:#65a30d}
+@media(max-width:950px){.hero{grid-template-columns:minmax(0,1fr);padding:60px 0}}
+@media(max-width:650px){.identity-visual{height:220px}.avatar-mark{font-size:3.2rem}.wow-orbs i{filter:blur(30px);opacity:.25}section{padding:60px 0}}
+@media(prefers-reduced-motion:reduce){
+ .entry-veil{display:none}
+ header,.hero>div,.avatar-core,.avatar-code i{animation:none!important}
+ .wow{transition:none}
+}

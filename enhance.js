@@ -181,7 +181,7 @@
       el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
     });
   }
-  const targets = [...document.querySelectorAll('.card, .detail, .area-link, .faq-list details, .showcase-display, .live-terminal, .brief-preview, .form-shell')];
+  const targets = [...document.querySelectorAll('.card, .detail, .area-link, .faq-list details, .showcase-display, .live-terminal, .brief-preview, .form-shell, .section-head, .timeline article, .area-code, .index-list a, .lead-section, .brief-section, .playground-section, .showcase-section, .area-teaser')];
   if (!targets.length) return;
   targets.forEach((el, i) => { el.classList.add('wow'); el.style.transitionDelay = ((i % 3) * 80) + 'ms'; });
   if (!('IntersectionObserver' in window)) { targets.forEach(el => el.classList.add('wow-in')); return; }

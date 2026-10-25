@@ -152,3 +152,11 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{ou
  .card,.identity-card{transform:none}
  .card:hover{transform:translateY(-4px)}
 }
+
+/* Lead generation: free-draft section right after the hero. */
+.lead-section{background:radial-gradient(circle at 85% 20%,#58338b45,transparent 45%),#0d0a19}
+.lead-steps{display:grid;gap:12px;margin-top:24px}
+.lead-steps>div{padding:18px 20px;border-left:2px solid #a178df;background:#201435;border-radius:0 9px 9px 0}
+.lead-steps b{color:#a7f5e5;font:.8rem ui-monospace,monospace;letter-spacing:.08em}
+.lead-steps p{margin:8px 0 0;color:#d8cde9}
+.lead-section .form-shell{box-shadow:0 25px 65px #0008}

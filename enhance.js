@@ -181,7 +181,7 @@
       el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
     });
   }
-  const targets = [...document.querySelectorAll('.card, .detail, .area-link, .faq-list details, .showcase-display, .live-terminal, .brief-preview, .form-shell, .section-head, .timeline article, .area-code, .index-list a, .lead-section, .brief-section, .playground-section, .showcase-section, .area-teaser')];
+  const targets = [...document.querySelectorAll('.card, .detail, .area-link, .faq-list details, .showcase-display, .live-terminal, .brief-preview, .form-shell, .section-head, .timeline article, .area-code, .index-list a, .lead-section, .brief-section, .playground-section, .showcase-section, .area-teaser, .lead-steps>div, .playground-intro')];
   if (!targets.length) return;
   targets.forEach((el, i) => { el.classList.add('wow'); el.style.transitionDelay = ((i % 3) * 80) + 'ms'; });
   if (!('IntersectionObserver' in window)) { targets.forEach(el => el.classList.add('wow-in')); return; }
@@ -189,4 +189,19 @@
     if (en.isIntersecting) { en.target.classList.add('wow-in'); io.unobserve(en.target); }
   }), { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   targets.forEach(el => io.observe(el));
+})();
+
+/* Hero example preview tabs: Café / Gym / Salon. */
+(() => {
+  const tabs = [...document.querySelectorAll('[data-preview-tab]')];
+  if (!tabs.length) return;
+  function activate(key) {
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.previewTab === key)));
+    document.querySelectorAll('[data-preview-panel]').forEach(p => {
+      const on = p.dataset.previewPanel === key;
+      p.hidden = !on;
+      p.classList.toggle('active', on);
+    });
+  }
+  tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.previewTab)));
 })();

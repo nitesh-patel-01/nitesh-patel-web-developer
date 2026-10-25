@@ -203,7 +203,21 @@
       p.classList.toggle('active', on);
     });
   }
-  tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.previewTab)));
+  tabs.forEach(t => t.addEventListener('click', () => { stopCycle(); activate(t.dataset.previewTab); }));
+  /* Auto-cycle the preview so the motion is visible without hovering (phones have no hover).
+     Stops permanently once the visitor picks a tab themselves; pauses while they look at it. */
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const box = document.querySelector('.hero-preview');
+  let i = 0, timer = null;
+  const start = () => { if (!timer) timer = setInterval(() => { i = (i + 1) % tabs.length; activate(tabs[i].dataset.previewTab); }, 4500); };
+  const stopCycle = () => { if (timer) { clearInterval(timer); timer = null; } };
+  start();
+  if (box) {
+    box.addEventListener('pointerenter', stopCycle);
+    box.addEventListener('pointerleave', start);
+    box.addEventListener('focusin', stopCycle);
+    box.addEventListener('focusout', start);
+  }
 })();
 
 /* Side section dots (Roof / Still Here style progress, homepage only, no pinning). */

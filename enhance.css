@@ -491,3 +491,32 @@ section:after{display:none}
 .nav-links a.nav-cta:hover{color:#fff;background:#000}
 .button:not(.outline):hover{background:#000;color:#fff}
 .button.outline:hover{background:#fff;color:#16130e;border-color:#16130e}
+
+/* === Single-line hero + anime scene + light header buttons, 25 Oct 2026 === */
+.pm-hero h1{white-space:nowrap;font-size:clamp(1.9rem,5vw,4rem);letter-spacing:-.04em}
+.pm-anime{display:block;width:100%;height:auto}
+.pm-anime .cloud{animation:cloudDrift 26s linear infinite}
+.pm-anime .c2{animation-duration:38s;animation-delay:-12s}
+@keyframes cloudDrift{from{transform:translateX(-160px)}to{transform:translateX(980px)}}
+.pm-anime .steam{opacity:0;animation:steamUp 3s ease-in-out infinite}
+.pm-anime .s2{animation-delay:1s}
+.pm-anime .s3{animation-delay:2s}
+@keyframes steamUp{0%{opacity:0;transform:translateY(6px)}30%{opacity:.9}100%{opacity:0;transform:translateY(-18px)}}
+.pm-anime .sun{transform-box:fill-box;transform-origin:center;animation:sunPulse 5s ease-in-out infinite alternate}
+@keyframes sunPulse{from{transform:scale(1)}to{transform:scale(1.12)}}
+.pm-anime .sign{animation:signPulse 2s ease-in-out infinite alternate}
+@keyframes signPulse{from{opacity:.55}to{opacity:1}}
+.pm-anime .bird{animation:birdFly 20s linear infinite}
+@keyframes birdFly{from{transform:translateX(-40px)}to{transform:translateX(980px)}}
+/* Light header buttons: the dark ⌘K button and mobile menu were still dark */
+.palette-launch{background:#fff;color:#16130e;border-color:#d8d2c2}
+.palette-launch:hover{border-color:#16130e;color:#16130e}
+.menu-toggle{color:#16130e}
+@media(max-width:650px){
+ .pm-hero h1{white-space:normal;font-size:clamp(2.2rem,11vw,2.9rem);line-height:1.1}
+ .nav-links{background:#faf9f5;border-color:#e4ded1}
+}
+@media(max-width:400px){.pm-hero h1{font-size:clamp(2rem,10vw,2.4rem)}}
+@media(prefers-reduced-motion:reduce){
+ .pm-anime .cloud,.pm-anime .steam,.pm-anime .sun,.pm-anime .sign,.pm-anime .bird{animation:none}
+}

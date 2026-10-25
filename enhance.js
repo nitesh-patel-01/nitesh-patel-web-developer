@@ -205,3 +205,26 @@
   }
   tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.previewTab)));
 })();
+
+/* Side section dots (Roof / Still Here style progress, homepage only, no pinning). */
+(() => {
+  const items = [
+    ['top', 'Top'], ['free-draft', 'Free draft'], ['featured-work', 'Work'],
+    ['services', 'Services'], ['how-it-works', 'How it works'], ['try-it', 'Try it'],
+    ['writing', 'Writing'], ['faq', 'Questions'],
+  ].filter(([id]) => document.getElementById(id));
+  if (items.length < 3) return;
+  const nav = document.createElement('nav');
+  nav.className = 'section-dots';
+  nav.setAttribute('aria-label', 'Page sections');
+  nav.innerHTML = items.map(([id, label]) => `<a href="#${id}" aria-label="${label}"></a>`).join('');
+  document.body.append(nav);
+  const links = [...nav.querySelectorAll('a')];
+  const setActive = (id) => links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) setActive(en.target.id);
+    }), { rootMargin: '-45% 0px -45% 0px' });
+    items.forEach(([id]) => io.observe(document.getElementById(id)));
+  }
+})();

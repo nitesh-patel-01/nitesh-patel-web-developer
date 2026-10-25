@@ -307,3 +307,34 @@ header{animation:navDrop .6s ease both}
  .preview-panel.active{animation:none}
  .hero-preview{animation:none}
 }
+
+/* === Motion layer 25 Oct 2026: Gun.io speed + Roof Studio polish + Still Here structure, all fast CSS === */
+/* Roof-style entry: the veil mark shrinks into place, then the hero headline reveals line by line */
+.entry-veil span{animation:veilMark .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes veilMark{from{opacity:0;transform:scale(2.4)}to{opacity:1;transform:scale(1)}}
+.hero h1{animation:heroLine .7s .1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes heroLine{from{clip-path:inset(0 0 100% 0);transform:translateY(18px)}to{clip-path:inset(0 0 0 0);transform:none}}
+/* Gun-style fast button feedback: colour swap in 0.25s, plus the existing shine */
+.button{transition:background .25s ease,transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.button:not(.outline):hover{background:#f2f5f7}
+/* Roof-style card zoom: image scales gently inside its clip, title area stays steady */
+.card img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover img{transform:scale(1.04)}
+.project-card:hover .pv-window{transform:rotate(0) scale(1.04)}
+/* Still-Here-style scale-in: project visuals grow from a slightly inset frame as they enter */
+.wow .project-visual{transform:scale(.97);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.wow-in .project-visual{transform:scale(1)}
+/* Headings reveal with a clip sweep when their section enters */
+.wow-in h2{animation:headingReveal .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes headingReveal{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+/* Roof / Still-Here side section dots: scroll progress, clickable, desktop only */
+.section-dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:10px}
+.section-dots a{width:10px;height:10px;border-radius:50%;background:#334155;border:1px solid #475569;transition:background .25s,transform .25s}
+.section-dots a.active{background:#a3e635;border-color:#a3e635;transform:scale(1.35)}
+.section-dots a:focus-visible{outline:3px solid #5eead4;outline-offset:3px}
+@media(max-width:1100px){.section-dots{display:none}}
+@media(prefers-reduced-motion:reduce){
+ .entry-veil span,.hero h1,.wow-in h2{animation:none}
+ .card img,.wow .project-visual{transform:none;transition:none}
+ .section-dots a{transition:none}
+}

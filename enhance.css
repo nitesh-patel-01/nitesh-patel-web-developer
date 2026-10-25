@@ -386,3 +386,102 @@ header{animation:navDrop .6s ease both}
 @media(prefers-reduced-motion:reduce){
  .pm-example,.pm-step{transition:none}
 }
+
+/* === Light premium theme + mobile-first, 25 Oct 2026: dark theme replaced, buttons rebuilt === */
+:root{--bg:#faf9f5;--bg2:#ffffff;--panel:#ffffff;--panel2:#f3f0e8;--line:#e4ded1;--ink:#16130e;--muted:#5f6a72;--blue:#0f766e;--cyan:#0f766e;--pink:#b45309;--sun:#b45309}
+body{background:#faf9f5;color:#16130e}
+body:before{display:none}
+main{background-image:none}
+header{background:#faf9f5e6;border-color:#e4ded1}
+.nav-links a{color:#16130e}
+.brand-mark{background:#16130e;color:#fff}
+.nav-cta,.button{background:#16130e;color:#fff;border-color:#16130e;border-radius:999px;padding:14px 24px;box-shadow:none}
+.button:after{display:none}
+.nav-cta:hover,.button:hover{background:#000;color:#fff;transform:translateY(-2px);box-shadow:none}
+.button.outline{background:transparent;color:#16130e;border-color:#d8d2c2}
+.button.outline:hover{background:#fff;color:#16130e;border-color:#16130e}
+.eyebrow{color:#0f766e}
+.muted,.lead{color:#5f6a72}
+a:hover{color:#0f766e}
+section{border-top-color:#e4ded1}
+section:after{display:none}
+.section-head .eyebrow:before,.page-intro .eyebrow:before{content:''}
+.card{background:#fff;border-color:#e4ded1;box-shadow:0 10px 30px #00000008}
+.card:before{background:#16130e;opacity:1}
+.card:hover{border-color:#16130e;box-shadow:0 18px 40px #00000012}
+.card p{color:#5f6a72}
+.card .link{color:#0f766e}
+.card .num{color:#0f766e}
+.card .num:before{content:''}
+.detail,.form-shell{background:#fff;border-color:#e4ded1;box-shadow:0 12px 30px #0000000d}
+.detail p{color:#5f6a72}
+.detail strong:before{content:''}
+.field label{color:#16130e}
+.field input,.field select,.field textarea{background:#fff;color:#16130e;border-color:#d8d2c2}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#16130e;box-shadow:0 0 0 3px #16130e14}
+.faq-list details{background:#fff;border-color:#e4ded1}
+.faq-list details[open]{border-color:#16130e}
+.faq-list p{color:#5f6a72;border-color:#e4ded1}
+.faq-list summary:after{color:#0f766e}
+.index-list a{background:#fff;border-color:#e4ded1;color:#16130e}
+.index-list small{color:#0f766e}
+.chip{background:#fff;border-color:#d8d2c2;color:#16130e}
+.stage-tab{background:#fff;border-color:#e4ded1;color:#16130e}
+.stage-tab[aria-selected=true]{background:#16130e;color:#fff;border-color:#16130e}
+.showcase-section,.lead-section,.playground-section,.brief-section,.area-teaser,.area-story{background:#faf9f5}
+.showcase-display{background:#fff;border-color:#e4ded1;box-shadow:0 18px 40px #0000000d}
+.showcase-caption{background:#fff}
+.showcase-caption a{color:#0f766e}
+.lead-steps>div{background:#fff;border-left-color:#0f766e}
+.lead-steps b{color:#0f766e}
+.lead-steps p{color:#5f6a72}
+.area-link{background:#fff;border-color:#e4ded1;color:#16130e}
+.area-link:hover{background:#fff;border-color:#16130e}
+.area-link small{color:#0f766e}
+.area-link em{color:#5f6a72}
+.area-points>div{background:#f3f0e8;border-left-color:#0f766e}
+.area-points p{color:#5f6a72}
+.callout{background:#f3f0e8;border-color:#e4ded1;border-left-color:#0f766e}
+.article p,.article ul{color:#3a4149}
+.footer-cta{background:#16130e}
+.footer-cta h2{color:#fff}
+.footer-cta .eyebrow{color:#a7f3d0}
+.wow-orbs,.wow-glow{display:none}
+.scroll-meter{background:#16130e}
+.section-dots a{background:#d8d2c2;border-color:#d8d2c2}
+.section-dots a.active{background:#16130e;border-color:#16130e}
+/* Premium hero on light: one teal italic accent word, no gradient */
+.pm-hero h1 span{color:#0f766e;font-style:italic}
+.pm-trust{color:#5f6a72}
+.pm-trust a{color:#16130e}
+.pm-example{background:#fff;border-color:#e4ded1;box-shadow:0 18px 40px #0000000d}
+.pm-example-bar{background:#f3f0e8;border-color:#e4ded1;color:#5f6a72}
+.pm-example-body p{color:#5f6a72}
+.pm-example-menu{background:#f3efe6}
+.pm-menu-title{color:#8a6d3b}
+.pm-example-menu>span{border-color:#e4ded1}
+.pm-example-menu i{color:#5f3d1e}
+.pm-example-note{color:#5f6a72}
+.pm-step{border-top-color:#16130e}
+.pm-step b{color:#0f766e}
+.pm-step p{color:#5f6a72}
+.pm-example .button.outline{color:#16130e}
+/* Mobile-first: full-width buttons, smaller headings, comfortable taps, no overflow */
+@media(max-width:650px){
+ .pm-hero{padding:56px 0 24px}
+ .pm-hero h1{font-size:clamp(2.1rem,9vw,2.6rem);line-height:1.12}
+ .pm-hero .lead{font-size:1.02rem;line-height:1.6}
+ .actions{flex-direction:column;align-items:stretch;gap:10px}
+ .button,.nav-cta{min-height:48px;width:100%;padding:14px 20px;font-size:1rem}
+ .pm-example-body>div:first-child{padding:24px 20px}
+ .pm-example-body h3{font-size:1.5rem}
+ .pm-example-menu{padding:22px 20px}
+ section{padding:52px 0}
+ h2{font-size:1.85rem}
+ .section-head{margin-bottom:26px}
+ .grid{gap:14px}
+ .card{padding:22px;min-height:0}
+ .form-shell{padding:22px 18px}
+ .field input,.field select,.field textarea{font-size:16px;padding:14px}
+ .pm-cta{padding:56px 0}
+}

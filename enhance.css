@@ -338,3 +338,51 @@ header{animation:navDrop .6s ease both}
  .card img,.wow .project-visual{transform:none;transition:none}
  .section-dots a{transition:none}
 }
+
+/* === Premium-minimal homepage, 25 Oct 2026: calm, centred, no code theatre === */
+/* Fix the two audit bugs: no black veil screen, no clip animation that cut the headline */
+.entry-veil{display:none!important}
+.hero h1,.wow-in h2{animation:none!important;clip-path:none!important}
+/* Better contrast and readable section labels, sitewide */
+:root{--muted:#cbd6ea}
+.eyebrow{font-size:.85rem;letter-spacing:.14em}
+/* Centred hero: smaller, calmer headline, no empty half, phone number in the hero */
+.pm-hero{text-align:center;max-width:880px;padding:100px 0 40px}
+.pm-hero h1{font-size:clamp(2.7rem,6vw,4.4rem);letter-spacing:-.04em;line-height:1.08;margin-top:18px}
+.pm-hero .lead{margin:0 auto;max-width:640px}
+.pm-hero .actions{justify-content:center}
+.pm-trust{color:#cbd6ea;font-size:.95rem;margin-top:22px}
+.pm-trust a{color:#eaf2ff}
+/* One realistic example, full width, with real-looking content instead of empty bars */
+.pm-example{border:1px solid #5a6ea6;border-radius:18px;overflow:hidden;background:#101b38;box-shadow:0 24px 50px #02061766}
+.pm-example-bar{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid #344269;background:#16224a;font-size:.8rem;color:#aeb9d6}
+.pm-example-bar span:last-child{margin-left:auto;letter-spacing:.1em}
+.pm-example-body{display:grid;grid-template-columns:1.15fr .85fr;gap:0;text-align:left}
+.pm-example-body>div:first-child{padding:34px 32px}
+.pm-example-body h3{font-size:1.9rem;margin:12px 0 10px}
+.pm-example-body p{color:#cbd6ea}
+.pm-example-menu{background:linear-gradient(160deg,#3b2a1e,#221a13);padding:28px 26px;display:flex;flex-direction:column;gap:14px}
+.pm-menu-title{font-size:.8rem;letter-spacing:.18em;color:#f0d9b8}
+.pm-example-menu>span{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #ffffff22;padding-bottom:12px}
+.pm-example-menu b{font-weight:600}
+.pm-example-menu i{font-style:normal;color:#f0d9b8}
+.pm-example-note{text-align:center;color:#9fb0d5;font-size:.88rem;margin:14px auto 0;max-width:880px}
+/* Three steps, no timeline, no tech chips */
+.pm-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pm-step{border-top:2px solid #81f5ee;padding-top:18px}
+.pm-step b{color:#81f5ee;font-size:.85rem;letter-spacing:.12em}
+.pm-step h3{margin-top:10px}
+.pm-step p{color:#cbd6ea}
+/* Final call to action: one button, no second form */
+.pm-cta{text-align:center;padding:90px 0}
+.pm-cta .lead{margin:0 auto}
+.pm-cta .actions{justify-content:center}
+@media(max-width:750px){
+ .pm-hero{padding:70px 0 30px}
+ .pm-example-body{grid-template-columns:1fr}
+ .pm-steps{grid-template-columns:1fr}
+ .pm-example-bar span:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .pm-example,.pm-step{transition:none}
+}

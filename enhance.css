@@ -485,3 +485,9 @@ section:after{display:none}
  .field input,.field select,.field textarea{font-size:16px;padding:14px}
  .pm-cta{padding:56px 0}
 }
+
+/* === Button readability fixes, 25 Oct 2026: nav-cta text was inheriting the dark nav-link colour, and an older hover rule was lightening the primary button === */
+.nav-links a.nav-cta{color:#fff}
+.nav-links a.nav-cta:hover{color:#fff;background:#000}
+.button:not(.outline):hover{background:#000;color:#fff}
+.button.outline:hover{background:#fff;color:#16130e;border-color:#16130e}
